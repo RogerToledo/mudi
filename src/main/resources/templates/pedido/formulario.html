@@ -1,0 +1,43 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{base :: head}"></head>
+<body>
+    <div th:replace="~{base :: topo}"></div>
+    <div class="container">
+        <div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+        <div class="card mt-3">
+            <form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="post">
+                <div class="mb-3">
+                    <label for="nomeProduto">Produto</label>
+                    <input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do Produto"/>
+                    <small>Imforma qual o nome do produto</small>
+                    <div th:erros="*{nomeProduto}" class="invalid-feedback">
+                        Este campo é obrigatório!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="urlProduto">URL</label>
+                    <input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" id="urlProduto" placeholder="URL do Produto"/>
+                    <small>Procure em um site o produto que seja e cole a url da página aqui</small>
+                    <div th:erros="*{urlProduto}" class="invalid-feedback">
+                        Este campo é obrigatório!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="urlImage">Imagem</label>
+                    <input th:field="*{urlImage}" th:errorclass="is-invalid" class="form-control" placeholder="Imagem do Produto"/>
+                    <small>Procure em um site o produto que seja e cole a url da imagem</small>
+                    <div th:erros="*{urlImage}" class="invalid-feedback">
+                        Este campo é obrigatório!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="descricao">Descrição</label>
+                    <textarea th:field="*{descricao}" th:errorclass="is-invalid" class="form-control" placeholder="Imagem do Produto"></textarea>
+                    <small>Procure em um site o produto que seja e cole a url da imagem</small>
+                </div>
+                <button class="btn btn-primary" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
